@@ -14,7 +14,6 @@ public class AU_PlayerController : MonoBehaviour
     Vector2 movementInput;
     [SerializeField] float movementSpeed;
     
-
     
     private void OnEnable()
     {
