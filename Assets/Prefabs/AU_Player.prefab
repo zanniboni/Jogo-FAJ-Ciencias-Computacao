@@ -95,6 +95,7 @@ GameObject:
   - component: {fileID: 6961825484325240792}
   - component: {fileID: 5775608652386861779}
   - component: {fileID: 6426340812583536504}
+  - component: {fileID: 7117425019056822703}
   m_Layer: 0
   m_Name: AU_Player
   m_TagString: Player
@@ -208,6 +209,25 @@ MonoBehaviour:
       m_Action: WASD
       m_Flags: 8
   movementSpeed: 5
+--- !u!95 &7117425019056822703
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2816119579432289100}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 22e727ba9e7ea024a92a2d066c240fce, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &9049906275727146482
 GameObject:
   m_ObjectHideFlags: 0
