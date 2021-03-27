@@ -1,0 +1,21 @@
+{
+    "name": "InputMaster",
+    "maps": [
+        {
+            "name": "Player",
+            "id": "8389681c-5964-4fc9-8b01-05c010185bf8",
+            "actions": [
+                {
+                    "name": "Movement",
+                    "type": "Button",
+                    "id": "91a0c5e4-9f27-418c-b169-fc7f21526cdc",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": []
+        }
+    ],
+    "controlSchemes": []
+}
