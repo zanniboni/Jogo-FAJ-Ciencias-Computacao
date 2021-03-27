@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    Rigidbody myRB;
+    Rigidbody2D myRB;
     Transform myAvatar;
     Animator myAnim;
     [SerializeField] InputAction WASD;
@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        myRB = GetComponent<Rigidbody>();
+        myRB = GetComponent<Rigidbody2D>();
         myAvatar = transform.GetChild(0);
 
         myAnim = GetComponent<Animator>();
