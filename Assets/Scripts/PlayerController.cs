@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     
     Rigidbody2D myRB;
     Transform myAvatar;
+    Transform firePoint;
     Animator myAnim;
     [SerializeField] InputAction WASD;
     Vector2 movementInput;
@@ -35,7 +36,6 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
         var keyboard = Keyboard.current;
         var apertou_w = keyboard.wKey.isPressed;
         var apertou_s = keyboard.sKey.isPressed;
@@ -43,7 +43,7 @@ public class PlayerController : MonoBehaviour
         var apertou_a = keyboard.aKey.isPressed;
         var apertou_space = keyboard.spaceKey.isPressed;
         var apertou_ctrl = keyboard.ctrlKey.isPressed;
-
+        
         movementInput = WASD.ReadValue<Vector2>();
         //Apertou W
         if (apertou_w)
@@ -85,7 +85,7 @@ public class PlayerController : MonoBehaviour
             ativarAnimacoes("apertou_a", apertou_a);
         }
 
-        //Apertou espaço
+        //Apertou espaï¿½o
         if (apertou_space)
         {
             ativarAnimacoes("apertou_space", apertou_space);
@@ -98,7 +98,9 @@ public class PlayerController : MonoBehaviour
         //Apertou CTRL
         if (apertou_ctrl)
         {
+            
             ativarAnimacoes("abaixar", apertou_ctrl);
+            
         }
         else
         {
@@ -121,7 +123,6 @@ public class PlayerController : MonoBehaviour
         {
             myAvatar.localScale = new Vector2(Mathf.Sign(-1), 1);
         }
-
 
         //myAvatar.localScale = new Vector2(Mathf.Sign(movementInput.x), 1);
         myAnim.SetFloat("Speed", movementInput.magnitude);
