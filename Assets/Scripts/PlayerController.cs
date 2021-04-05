@@ -5,7 +5,8 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    
+
+
     Rigidbody2D myRB;
     Transform myAvatar;
     Transform firePoint;
@@ -14,6 +15,9 @@ public class PlayerController : MonoBehaviour
     Vector2 movementInput;
     [SerializeField] float movementSpeed;
 
+    public int maxHealth = 100;
+    public int currentHealth;
+    public HealthBar healthBar;
 
     private void OnEnable()
     {
@@ -28,6 +32,8 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        currentHealth = maxHealth;
+        healthBar.SetMaxHealth(maxHealth);
         myRB = GetComponent<Rigidbody2D>();
         myAvatar = transform.GetChild(0);
         myAnim = GetComponent<Animator>();
@@ -41,7 +47,7 @@ public class PlayerController : MonoBehaviour
         var apertou_s = keyboard.sKey.isPressed;
         var apertou_d = keyboard.dKey.isPressed;
         var apertou_a = keyboard.aKey.isPressed;
-        var apertou_space = keyboard.spaceKey.isPressed;
+        var apertou_space = keyboard.spaceKey.wasPressedThisFrame;
         var apertou_ctrl = keyboard.ctrlKey.isPressed;
         
         movementInput = WASD.ReadValue<Vector2>();
@@ -106,7 +112,13 @@ public class PlayerController : MonoBehaviour
         {
             ativarAnimacoes("abaixar", apertou_ctrl);
         }
-        
+
+        /*
+        if (apertou_space)
+        {
+            TakeDamage(20);
+        }
+        */
     }
 
 
@@ -133,6 +145,12 @@ public class PlayerController : MonoBehaviour
         myRB.velocity = movementInput * movementSpeed;
     }
 
+    void TakeDamage(int damage)
+    {
+        currentHealth -= damage;
+        healthBar.SetHealth(currentHealth);
+        
+    }
 
 }
 
