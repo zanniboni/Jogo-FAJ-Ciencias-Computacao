@@ -6,7 +6,6 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
 
-
     Rigidbody2D myRB;
     Transform myAvatar;
     Transform firePoint;
@@ -14,10 +13,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] InputAction WASD;
     Vector2 movementInput;
     [SerializeField] float movementSpeed;
-
-    public int maxHealth = 100;
-    public int currentHealth;
-    public HealthBar healthBar;
 
     private void OnEnable()
     {
@@ -32,8 +27,6 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        currentHealth = maxHealth;
-        healthBar.SetMaxHealth(maxHealth);
         myRB = GetComponent<Rigidbody2D>();
         myAvatar = transform.GetChild(0);
         myAnim = GetComponent<Animator>();
@@ -52,73 +45,18 @@ public class PlayerController : MonoBehaviour
         
         movementInput = WASD.ReadValue<Vector2>();
         //Apertou W
-        if (apertou_w)
-        {
-            ativarAnimacoes("apertou_w", apertou_w);
-        } 
-        else
-        {
-            ativarAnimacoes("apertou_w", apertou_w);
-        }
-
+        ativarAnimacoes("apertou_w", apertou_w);
         //Apertou S
-        if (apertou_s)
-        {
-            ativarAnimacoes("apertou_s", apertou_s);
-        } 
-        else
-        { 
-            ativarAnimacoes("apertou_s", apertou_s); 
-        }
-
+        ativarAnimacoes("apertou_s", apertou_s);
         //Apertou D
-        if (apertou_d)
-        {
-            ativarAnimacoes("apertou_d", apertou_d);
-        }
-        else
-        {
-            ativarAnimacoes("apertou_d", apertou_d);
-        }
-
+        ativarAnimacoes("apertou_d", apertou_d);
         //Apertou A
-        if (apertou_a)
-        {
-            ativarAnimacoes("apertou_a", apertou_a);
-        }
-        else
-        {
-            ativarAnimacoes("apertou_a", apertou_a);
-        }
-
+        ativarAnimacoes("apertou_a", apertou_a);
         //Apertou espa�o
-        if (apertou_space)
-        {
-            ativarAnimacoes("apertou_space", apertou_space);
-        }
-        else
-        {
-            ativarAnimacoes("apertou_space", apertou_space);
-        }
-
+        ativarAnimacoes("apertou_space", apertou_space);
         //Apertou CTRL
-        if (apertou_ctrl)
-        {
-            
-            ativarAnimacoes("abaixar", apertou_ctrl);
-            
-        }
-        else
-        {
-            ativarAnimacoes("abaixar", apertou_ctrl);
-        }
+        ativarAnimacoes("abaixar", apertou_ctrl);
 
-        /*
-        if (apertou_space)
-        {
-            TakeDamage(20);
-        }
-        */
     }
 
 
@@ -145,12 +83,9 @@ public class PlayerController : MonoBehaviour
         myRB.velocity = movementInput * movementSpeed;
     }
 
-    void TakeDamage(int damage)
-    {
-        currentHealth -= damage;
-        healthBar.SetHealth(currentHealth);
-        
+    public void killPlayer(bool kill){
+        myAnim.SetFloat("health", 0);
+        Destroy(gameObject, 0.6f);
     }
-
 }
 
