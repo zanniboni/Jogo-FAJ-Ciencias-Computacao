@@ -34,10 +34,35 @@ public class Enemy_Patrol : MonoBehaviour
         }
 
         correr(1);
+
+
+    }
+
+    void OnCollisionEnter2D(Collision2D other)
+    {
+        if(other.gameObject.tag == "Bullet"){
+            TakeDamage(20);
+        }
         
 
     }
 
+    void TakeDamage(int damage)
+    {
+        gameObject.GetComponent<PlayerHealth>().UpdateHealth(-damage);
+        myAnim.SetFloat("health", gameObject.GetComponent<PlayerHealth>().getHealth());
+        verificaMorte();
+    }
+
+    void verificaMorte()
+    {
+        if(gameObject.GetComponent<PlayerHealth>().getHealth() < 0.1)
+        {
+            transform.Translate(Vector2.left * 0 * Time.deltaTime);
+            myAnim.SetFloat("speed", 0);
+            Destroy(gameObject, 0.6f);
+        }
+    }
 
     void patrulhar()
     {

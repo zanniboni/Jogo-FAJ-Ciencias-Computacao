@@ -22,11 +22,14 @@ public class PlayerHealth : MonoBehaviour
             health = maxHealth;
         } else if(health <= 0f){
             health = 0f;
-            gameObject.GetComponent<PlayerController>().killPlayer(true);
+            //gameObject.GetComponent<PlayerController>().killPlayer(true);
             Debug.Log("Player Respawn");
         }
         healthBar.SetHealth(health);
     }
 
+    public float getHealth(){
+        return health;
+    }
 
 }
