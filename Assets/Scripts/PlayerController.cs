@@ -57,6 +57,7 @@ public class PlayerController : MonoBehaviour
         //Apertou CTRL
         ativarAnimacoes("abaixar", apertou_ctrl);
 
+        verificaMorte();
     }
 
 
@@ -83,9 +84,15 @@ public class PlayerController : MonoBehaviour
         myRB.velocity = movementInput * movementSpeed;
     }
 
-    public void killPlayer(bool kill){
-        myAnim.SetFloat("health", 0);
-        Destroy(gameObject, 0.6f);
+    void verificaMorte()
+    {
+        if(gameObject.GetComponent<PlayerHealth>().getHealth() < 0.1)
+        {
+            transform.Translate(Vector2.left * 0 * Time.deltaTime);
+            myAnim.SetFloat("speed", 0);
+            myAnim.SetFloat("health", 0);
+            Destroy(gameObject, 0.6f);
+        }
     }
 }
 
