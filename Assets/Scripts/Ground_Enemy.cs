@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Ground_Enemy : MonoBehaviour
 {
-    [SerializeField] private float attackDamage = 30f;
+    [SerializeField] private float attackDamage = 60f;
     [SerializeField] private float attackSpeed = 0.002f;
     private float canAttack;
     private Collider2D player;

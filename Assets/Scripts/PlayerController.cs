@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
     public GameObject bombPrefab;
     public Transform spawnPoint;
     public string playerLook;
+    public bool morreu = false;
 
     private void OnEnable()
     {
@@ -69,8 +70,8 @@ public class PlayerController : MonoBehaviour
         if(apertou_c){
             plantar_Bomba();
         }
-        
         verificaMorte();
+        
     }
 
 
@@ -120,13 +121,19 @@ public class PlayerController : MonoBehaviour
 
     void verificaMorte()
     {
+
         if(gameObject.GetComponent<PlayerHealth>().getHealth() < 0.1)
         {
             transform.Translate(Vector2.left * 0 * Time.deltaTime);
             myAnim.SetFloat("speed", 0);
             myAnim.SetFloat("health", 0);
-            Destroy(gameObject, 0.6f);
+            Destroy(gameObject, 0.8f);
+            morreu = true;
+            FindObjectOfType<GameManager>().EndGame();
+            
         }
     }
+
+
 }
 
