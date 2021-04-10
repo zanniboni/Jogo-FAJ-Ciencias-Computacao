@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
 
+    public Vector2 lastInput;
     Rigidbody2D myRB;
     Transform myAvatar;
     Transform firePoint;
@@ -13,6 +14,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] InputAction WASD;
     Vector2 movementInput;
     [SerializeField] float movementSpeed;
+    public GameObject bombPrefab;
+    public Transform spawnPoint;
 
     private void OnEnable()
     {
@@ -42,8 +45,13 @@ public class PlayerController : MonoBehaviour
         var apertou_a = keyboard.aKey.isPressed;
         var apertou_space = keyboard.spaceKey.wasPressedThisFrame;
         var apertou_ctrl = keyboard.ctrlKey.isPressed;
-        
+        var apertou_c = keyboard.cKey.wasPressedThisFrame;
+
         movementInput = WASD.ReadValue<Vector2>();
+        
+        if(movementInput.sqrMagnitude != 0){
+            lastInput = movementInput;
+        }
         //Apertou W
         ativarAnimacoes("apertou_w", apertou_w);
         //Apertou S
@@ -57,6 +65,9 @@ public class PlayerController : MonoBehaviour
         //Apertou CTRL
         ativarAnimacoes("abaixar", apertou_ctrl);
 
+        if(apertou_c){
+            GameObject bomb = Instantiate(bombPrefab, spawnPoint.position, transform.rotation);
+        }
         verificaMorte();
     }
 

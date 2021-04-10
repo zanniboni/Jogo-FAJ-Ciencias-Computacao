@@ -24,8 +24,8 @@ public class Shooting : MonoBehaviour
 
     void atirar()
     {
-        GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.root.rotation);
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-        rb.AddForce(firePoint.up * bulletForce, ForceMode2D.Impulse);
+        rb.AddForce(firePoint.root.GetComponent<PlayerController>().lastInput * bulletForce, ForceMode2D.Impulse);
     }
 }

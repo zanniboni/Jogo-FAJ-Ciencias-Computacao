@@ -358,10 +358,10 @@ AnimatorStateMachine:
     m_Position: {x: -680, y: -100, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -7129117746063306905}
-    m_Position: {x: -645, y: -35, z: 0}
+    m_Position: {x: -330, y: 280, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -6724942258005034366}
-    m_Position: {x: -30, y: 210, z: 0}
+    m_Position: {x: -20, y: 200, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions:
   - {fileID: -588162946026906104}
@@ -2540,7 +2540,7 @@ AnimatorStateTransition:
   m_TransitionDuration: 0
   m_TransitionOffset: 0
   m_ExitTime: 0.75
-  m_HasExitTime: 0
+  m_HasExitTime: 1
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
