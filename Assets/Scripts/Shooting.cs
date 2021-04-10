@@ -7,9 +7,10 @@ public class Shooting : MonoBehaviour
 {
     public Transform firePoint;
     public GameObject bulletPrefab;
+    public GameObject bulletPrefab_side;
     
     public float bulletForce = 20f;
-
+    
     void Update()
     {
 
@@ -24,8 +25,19 @@ public class Shooting : MonoBehaviour
 
     void atirar()
     {
-        GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.root.rotation);
-        Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-        rb.AddForce(firePoint.root.GetComponent<PlayerController>().lastInput * bulletForce, ForceMode2D.Impulse);
+        //Debug.Log(firePoint.root.GetComponent<PlayerController>().lastInput);
+        string playerLook = firePoint.root.GetComponent<PlayerController>().playerLook;
+        Debug.Log(playerLook);
+        if(playerLook == "A" || playerLook == "D"){
+            GameObject bullet = Instantiate(bulletPrefab_side, firePoint.position, firePoint.root.rotation);
+            Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+            rb.AddForce(firePoint.root.GetComponent<PlayerController>().lastInput * bulletForce, ForceMode2D.Impulse);
+        } else{
+            GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.root.rotation);
+            Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+            rb.AddForce(firePoint.root.GetComponent<PlayerController>().lastInput * bulletForce, ForceMode2D.Impulse);
+        }
+
+
     }
 }

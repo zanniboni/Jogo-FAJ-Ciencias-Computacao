@@ -306,7 +306,7 @@ Transform:
   - {fileID: 1038618262}
   - {fileID: 583300477}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &162800816
 GameObject:
@@ -484,7 +484,7 @@ Transform:
   m_Children:
   - {fileID: 693612948}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &200262896 stripped
 Transform:
@@ -1468,7 +1468,7 @@ Transform:
   - {fileID: 1960602286}
   - {fileID: 1137366094}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &693612947
 GameObject:
@@ -4290,7 +4290,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 640335133239391972, guid: b2fabbac4e169b44c99fa68275dd094a, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 640335133239391972, guid: b2fabbac4e169b44c99fa68275dd094a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4335,7 +4335,7 @@ PrefabInstance:
     - target: {fileID: 640335133239391973, guid: b2fabbac4e169b44c99fa68275dd094a, type: 3}
       propertyPath: bombPrefab
       value: 
-      objectReference: {fileID: 1185899836201355169, guid: 3cabfce4816aa654b872900edfb0ebc2, type: 3}
+      objectReference: {fileID: 3268579126292416919, guid: 900494f6fe7f76c41b312c0860803a43, type: 3}
     - target: {fileID: 640335133239391973, guid: b2fabbac4e169b44c99fa68275dd094a, type: 3}
       propertyPath: spawnPoint
       value: 
@@ -4348,6 +4348,14 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 640335133239391999, guid: b2fabbac4e169b44c99fa68275dd094a, type: 3}
+      propertyPath: bulletPrefab
+      value: 
+      objectReference: {fileID: 5978526766888100360, guid: d265d487fa2faa44db5224eb8ea4615c, type: 3}
+    - target: {fileID: 640335133239391999, guid: b2fabbac4e169b44c99fa68275dd094a, type: 3}
+      propertyPath: bulletPrefab_side
+      value: 
+      objectReference: {fileID: 1525037344102451074, guid: e180192c4e22f5545ab3c7be34517f98, type: 3}
     - target: {fileID: 640335133926849592, guid: b2fabbac4e169b44c99fa68275dd094a, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 0
@@ -13880,7 +13888,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4771022827283084544, guid: 7da56d2ecf056894a800a0fe57310872, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4771022827283084544, guid: 7da56d2ecf056894a800a0fe57310872, type: 3}
       propertyPath: m_LocalPosition.x

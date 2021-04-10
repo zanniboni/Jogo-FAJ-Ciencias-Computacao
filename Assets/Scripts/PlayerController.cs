@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float movementSpeed;
     public GameObject bombPrefab;
     public Transform spawnPoint;
+    public string playerLook;
 
     private void OnEnable()
     {
@@ -48,7 +49,7 @@ public class PlayerController : MonoBehaviour
         var apertou_c = keyboard.cKey.wasPressedThisFrame;
 
         movementInput = WASD.ReadValue<Vector2>();
-        
+        //Debug.Log(movementInput);
         if(movementInput.sqrMagnitude != 0){
             lastInput = movementInput;
         }
@@ -66,11 +67,16 @@ public class PlayerController : MonoBehaviour
         ativarAnimacoes("abaixar", apertou_ctrl);
 
         if(apertou_c){
-            GameObject bomb = Instantiate(bombPrefab, spawnPoint.position, transform.rotation);
+            plantar_Bomba();
         }
+        
         verificaMorte();
     }
 
+
+    private void plantar_Bomba(){
+        GameObject bomb = Instantiate(bombPrefab, spawnPoint.position, transform.rotation);
+    }
 
     private void ativarAnimacoes(string trigger, bool stateAnim)
     { 
@@ -87,8 +93,25 @@ public class PlayerController : MonoBehaviour
         }
 
         //myAvatar.localScale = new Vector2(Mathf.Sign(movementInput.x), 1);
+        checkPlayerLook(trigger, stateAnim);
         myAnim.SetFloat("Speed", movementInput.magnitude);
     }
+    private void checkPlayerLook(string trigger, bool stateAnim){
+
+        if(stateAnim){
+            if(trigger == "apertou_a"){
+                playerLook = "A";
+            } else if(trigger == "apertou_d"){
+                playerLook = "D";
+            } else if(trigger == "apertou_s"){
+                playerLook = "S";
+            } else if(trigger == "apertou_w"){
+                playerLook = "W";
+            }
+            Debug.Log(playerLook);
+        }
+    }
+
 
     private void FixedUpdate()
     {
