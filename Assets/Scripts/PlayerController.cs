@@ -9,7 +9,6 @@ public class PlayerController : MonoBehaviour
     public Vector2 lastInput;
     Rigidbody2D myRB;
     Transform myAvatar;
-    Transform firePoint;
     Animator myAnim;
     [SerializeField] InputAction WASD;
     Vector2 movementInput;
@@ -18,6 +17,9 @@ public class PlayerController : MonoBehaviour
     public Transform spawnPoint;
     public string playerLook;
     public bool morreu = false;
+    public Transform hand;
+    public GameObject gun;
+
 
     private void OnEnable()
     {
@@ -48,7 +50,8 @@ public class PlayerController : MonoBehaviour
         var apertou_space = keyboard.spaceKey.wasPressedThisFrame;
         var apertou_ctrl = keyboard.ctrlKey.isPressed;
         var apertou_c = keyboard.cKey.wasPressedThisFrame;
-
+        var mouse = Mouse.current;
+        
         movementInput = WASD.ReadValue<Vector2>();
         //Debug.Log(movementInput);
         if(movementInput.sqrMagnitude != 0){
@@ -71,9 +74,12 @@ public class PlayerController : MonoBehaviour
             plantar_Bomba();
         }
         verificaMorte();
-        
     }
 
+    private void FixedUpdate()
+    {
+        myRB.velocity = movementInput * movementSpeed;
+    }
 
     private void plantar_Bomba(){
         GameObject bomb = Instantiate(bombPrefab, spawnPoint.position, transform.rotation);
@@ -109,14 +115,9 @@ public class PlayerController : MonoBehaviour
             } else if(trigger == "apertou_w"){
                 playerLook = "W";
             }
-            Debug.Log(playerLook);
+            gameObject.GetComponent<GunController>().RotateHand();            
+
         }
-    }
-
-
-    private void FixedUpdate()
-    {
-        myRB.velocity = movementInput * movementSpeed;
     }
 
     void verificaMorte()

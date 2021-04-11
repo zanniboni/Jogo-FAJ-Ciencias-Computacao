@@ -29,13 +29,17 @@ public class Shooting : MonoBehaviour
         string playerLook = firePoint.root.GetComponent<PlayerController>().playerLook;
         Debug.Log(playerLook);
         if(playerLook == "A" || playerLook == "D"){
-            GameObject bullet = Instantiate(bulletPrefab_side, firePoint.position, firePoint.root.rotation);
+
+            GameObject bullet = Instantiate(bulletPrefab_side, firePoint.position, firePoint.rotation);
             Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
             rb.AddForce(firePoint.root.GetComponent<PlayerController>().lastInput * bulletForce, ForceMode2D.Impulse);
+
         } else{
-            GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.root.rotation);
+
+            GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
             Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
             rb.AddForce(firePoint.root.GetComponent<PlayerController>().lastInput * bulletForce, ForceMode2D.Impulse);
+            
         }
 
 

@@ -10,10 +10,15 @@ public class Bullet : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
+        Debug.Log(collision.gameObject.tag);
+        if(collision.gameObject.tag != "Player" && collision.gameObject.tag != "Gun"){
+            
+            GameObject effect = Instantiate(hitEffect, transform.position, Quaternion.identity);
+            Destroy(effect, 0.2f);
+            Destroy(gameObject);
+        } 
 
-        GameObject effect = Instantiate(hitEffect, transform.position, Quaternion.identity);
-        Destroy(effect, 0.2f);
-        Destroy(gameObject);
+      
 
     }
 }
