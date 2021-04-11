@@ -94,6 +94,8 @@ GameObject:
   - component: {fileID: 9058399938918928752}
   - component: {fileID: 2883212275582603749}
   - component: {fileID: 1641172497891218664}
+  - component: {fileID: -7817619893698208061}
+  - component: {fileID: -543437558260531243}
   m_Layer: 0
   m_Name: BombPrefab
   m_TagString: Bomb
@@ -202,3 +204,32 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0.50384617}
   serializedVersion: 2
   m_Radius: 0.50384617
+--- !u!114 &-7817619893698208061
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3268579126292416919}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87c4e6975b0527a43833b95006a6aa97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitEffect: {fileID: 4890263670919555515, guid: 1f463e9ee138ce3438f52665347ce87a, type: 3}
+--- !u!58 &-543437558260531243
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3268579126292416919}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.054513216, y: 0.50384617}
+  serializedVersion: 2
+  m_Radius: 1.9393632

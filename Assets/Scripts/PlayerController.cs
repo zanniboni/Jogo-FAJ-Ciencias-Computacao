@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour
     public bool morreu = false;
     public Transform hand;
     public GameObject gun;
-
+    private GameObject bombSpawned;
 
     private void OnEnable()
     {
@@ -83,6 +83,12 @@ public class PlayerController : MonoBehaviour
 
     private void plantar_Bomba(){
         GameObject bomb = Instantiate(bombPrefab, spawnPoint.position, transform.rotation);
+        bombSpawned = bomb;
+        Invoke("explodirBomba", 2);
+    }
+
+    void explodirBomba(){
+        bombSpawned.GetComponent<BombController>().SetExplosion(true);
     }
 
     private void ativarAnimacoes(string trigger, bool stateAnim)
