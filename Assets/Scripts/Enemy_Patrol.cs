@@ -23,7 +23,9 @@ public class Enemy_Patrol : MonoBehaviour
         if(isHunting == false){
             if (movinRight)
             {
+                //Movimenta o player
                 transform.Translate(Vector2.right * speed * Time.deltaTime);
+                //Flip player
                 transform.localScale = new Vector2(Mathf.Sign(1), 1);
             }
             else

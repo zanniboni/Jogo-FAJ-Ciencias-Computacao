@@ -13,7 +13,6 @@ public class PlayerHealth : MonoBehaviour
         healthBar.SetMaxHealth(health);
     }
 
-    // Update is called once per frame
     public void UpdateHealth(float mod)
     {
         health += mod;
@@ -26,10 +25,17 @@ public class PlayerHealth : MonoBehaviour
             Debug.Log("Player Respawn");
         }
         healthBar.SetHealth(health);
+
+        PlayerController player = GetComponent<PlayerController>();
+        if (player)
+        {
+            player.takeDamage();
+        }
+
     }
 
     public float getHealth(){
         return health;
     }
-
+    
 }

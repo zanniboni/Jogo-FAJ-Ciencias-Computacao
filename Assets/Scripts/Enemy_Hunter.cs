@@ -7,7 +7,7 @@ public class Enemy_Hunter : MonoBehaviour
 
     public float speed = 3f;
     [SerializeField] private float attackDamage = 10f;
-    [SerializeField] private float attackSpeed = 1f;
+    [SerializeField] private float attackSpeed = 0.5f;
     private float canAttack;
     private Transform target;
 

@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-
+    private SpriteRenderer playerSprite;
     public Vector2 lastInput;
     Rigidbody2D myRB;
     Transform myAvatar;
@@ -34,6 +34,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        playerSprite = transform.GetChild(0).GetComponent<SpriteRenderer>();
         myRB = GetComponent<Rigidbody2D>();
         myAvatar = transform.GetChild(0);
         myAnim = GetComponent<Animator>();
@@ -81,6 +82,33 @@ public class PlayerController : MonoBehaviour
         myRB.velocity = movementInput * movementSpeed;
     }
 
+    public float effectTime = 0.3f;
+
+    IEnumerator takeDamageEffect()
+    {
+        float deltaTime = 0;
+        while(deltaTime <= effectTime)
+        {
+            deltaTime += Time.deltaTime;
+            playerSprite.color = Color.Lerp(Color.white, Color.red, deltaTime / effectTime);
+            yield return null;
+        }
+
+        yield return new WaitForSeconds(0.1f);
+        deltaTime = 0;
+        while (deltaTime <= effectTime)
+        {
+            deltaTime += Time.deltaTime;
+            playerSprite.color = Color.Lerp(Color.red, Color.white, deltaTime / effectTime);
+            yield return null;
+        }
+
+    }
+
+    public void takeDamage()
+    {
+        StartCoroutine(takeDamageEffect());
+    }
     private void plantar_Bomba(){
         GameObject bomb = Instantiate(bombPrefab, spawnPoint.position, transform.rotation);
         bombSpawned = bomb;

@@ -16,6 +16,7 @@ public class Bullet : MonoBehaviour
             GameObject effect = Instantiate(hitEffect, transform.position, Quaternion.identity);
             Destroy(effect, 0.2f);
             Destroy(gameObject);
+            
         } 
 
       
