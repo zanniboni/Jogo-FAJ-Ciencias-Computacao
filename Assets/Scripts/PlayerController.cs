@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour
     public Transform hand;
     public GameObject gun;
     private GameObject bombSpawned;
+    
 
     private void OnEnable()
     {
@@ -168,7 +169,6 @@ public class PlayerController : MonoBehaviour
             
         }
     }
-
-
+    
 }
 

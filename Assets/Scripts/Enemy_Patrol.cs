@@ -11,6 +11,11 @@ public class Enemy_Patrol : MonoBehaviour
     Animator myAnim;
     private bool movinRight = true;
 
+    public static int count = 0;
+    public void Awake()
+    {
+        count++;
+    }
 
     void Start()
     {
@@ -18,17 +23,6 @@ public class Enemy_Patrol : MonoBehaviour
         Invoke("patrulhar", 2);
     }
     
-    public int count = 0;
-    public Awake()
-    {
-        count++;
-    }
- 
-    void Die()
-    {
-        count--;
-    }
-
     void Update()
     {
 
@@ -75,6 +69,7 @@ public class Enemy_Patrol : MonoBehaviour
             transform.Translate(Vector2.left * 0 * Time.deltaTime);
             myAnim.SetFloat("speed", 0);
             Destroy(gameObject, 0.6f);
+            count--;
         }
     }
 
