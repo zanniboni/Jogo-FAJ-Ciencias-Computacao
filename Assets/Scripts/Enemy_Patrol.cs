@@ -17,6 +17,18 @@ public class Enemy_Patrol : MonoBehaviour
         myAnim = GetComponent<Animator>();
         Invoke("patrulhar", 2);
     }
+    
+    public int count = 0;
+    public Awake()
+    {
+        count++;
+    }
+ 
+    void Die()
+    {
+        count--;
+    }
+
     void Update()
     {
 
