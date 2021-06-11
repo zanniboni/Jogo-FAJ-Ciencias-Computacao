@@ -7,8 +7,8 @@ public class GameManager : MonoBehaviour
     public float restartDelay = 1f;
 
     public void EndGame(){
-        bool areAllEnemiesDead = Enemy_Patrol.count == 0;
-        Debug.Log("LOG DE CONTAGEM DE INIMIGOS: " + Enemy_Patrol.count);
+        
+        
         if(gameHasEnded == false){
             gameHasEnded = true;
             Debug.Log("GAME OVER");
@@ -16,12 +16,18 @@ public class GameManager : MonoBehaviour
             Invoke("Restart", restartDelay);
         }
 
-        if(areAllEnemiesDead){
-            Invoke("victory", restartDelay);
-        }
+
         
     }
     
+    public void VerificaVitoria(){
+        bool areAllEnemiesDead = Enemy_Patrol.count == 0;
+        Debug.Log("LOG DE CONTAGEM DE INIMIGOS: " + Enemy_Patrol.count);
+                if(areAllEnemiesDead){
+            Invoke("victory", restartDelay);
+        }
+        Invoke("VerificaVitoria", restartDelay);
+    }
     void victory(){
         SceneManager.LoadScene("Win");
     }

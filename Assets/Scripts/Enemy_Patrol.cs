@@ -66,10 +66,11 @@ public class Enemy_Patrol : MonoBehaviour
     {
         if(gameObject.GetComponent<PlayerHealth>().getHealth() < 0.1)
         {
+            count--;
             transform.Translate(Vector2.left * 0 * Time.deltaTime);
             myAnim.SetFloat("speed", 0);
             Destroy(gameObject, 0.6f);
-            count--;
+            
         }
     }
 

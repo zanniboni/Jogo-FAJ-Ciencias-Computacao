@@ -39,6 +39,7 @@ public class PlayerController : MonoBehaviour
         myRB = GetComponent<Rigidbody2D>();
         myAvatar = transform.GetChild(0);
         myAnim = GetComponent<Animator>();
+        FindObjectOfType<GameManager>().VerificaVitoria();
     }
 
     // Update is called once per frame
@@ -76,6 +77,7 @@ public class PlayerController : MonoBehaviour
             plantar_Bomba();
         }
         verificaMorte();
+        
     }
 
     private void FixedUpdate()
@@ -166,6 +168,7 @@ public class PlayerController : MonoBehaviour
             Destroy(gameObject, 0.8f);
             morreu = true;
             FindObjectOfType<GameManager>().EndGame();
+            
             
         }
     }
