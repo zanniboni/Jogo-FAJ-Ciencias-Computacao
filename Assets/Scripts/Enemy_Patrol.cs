@@ -11,12 +11,18 @@ public class Enemy_Patrol : MonoBehaviour
     Animator myAnim;
     private bool movinRight = true;
 
+    public static int count = 0;
+    public void Awake()
+    {
+        count++;
+    }
 
     void Start()
     {
         myAnim = GetComponent<Animator>();
         Invoke("patrulhar", 2);
     }
+    
     void Update()
     {
 
@@ -60,9 +66,11 @@ public class Enemy_Patrol : MonoBehaviour
     {
         if(gameObject.GetComponent<PlayerHealth>().getHealth() < 0.1)
         {
+            count--;
             transform.Translate(Vector2.left * 0 * Time.deltaTime);
             myAnim.SetFloat("speed", 0);
             Destroy(gameObject, 0.6f);
+            
         }
     }
 
